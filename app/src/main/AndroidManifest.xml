@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vinic.appbluetooth">
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
@@ -19,11 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListaDispositivos"
+        <activity
+            android:name=".ListaDispositivos"
             android:label="Dispositivos Pareados"
-            android:theme="@android:style/Theme.Dialog"
-            />
-
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>
