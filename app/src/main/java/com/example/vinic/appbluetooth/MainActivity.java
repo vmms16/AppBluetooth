@@ -7,8 +7,10 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompatApi23;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             public void handleMessage(Message msg) {
 
                 if(msg.what == MESSAGE_READ){
-
+                    //Toast.makeText(getApplicationContext(),msg.toString(),Toast.LENGTH_LONG).show();
                     String recebidos = (String) msg.obj;
 
                     dadosBluetooth.append(recebidos);
@@ -135,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         if(dadosBluetooth.charAt(0)== '{'){
 
                             String dadosFinais= dadosBluetooth.substring(1, tamanhoInformacao);
-
+                            Log.d("TAG", dadosFinais);
                             Toast.makeText(getApplicationContext(),"Dados recebidos: "+dadosFinais, Toast.LENGTH_LONG).show();
 
                         }
@@ -184,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                         btnConectar.setText("Desconectar");
 
 
-                    }catch (IOException e){
+                    }catch (Exception e){
                         conexao=false;
                         Toast.makeText(getApplicationContext(),"Ocorreu um erro", Toast.LENGTH_LONG).show();
                     }
@@ -217,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void run() {
-            byte[] buffer = new byte[1024];  // buffer store for the stream
+            byte[] buffer = new byte[30720];  // buffer store for the stream
             int bytes; // bytes returned from read()
 
             // Keep listening to the InputStream until an exception occurs
